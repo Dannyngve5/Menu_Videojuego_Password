@@ -1,15 +1,29 @@
-[gd_scene load_steps=11 format=3 uid="uid://ooc4ex127jgn"]
+[gd_scene load_steps=15 format=3 uid="uid://ooc4ex127jgn"]
 
 [ext_resource type="Script" path="res://Scenes/Menu/MainMenu.gd" id="1_aar8g"]
 [ext_resource type="AudioStream" uid="uid://box6iyywjpppo" path="res://Sounds/GUI/WrongSound.mp3" id="2_dk5tv"]
 [ext_resource type="Texture2D" uid="uid://u1nmm5ag7t64" path="res://Assets/GUI/FondoMenu.png" id="2_xyx4t"]
 [ext_resource type="AudioStream" uid="uid://bmacrsvusqva7" path="res://Sounds/GUI/AcceptCum.mp3" id="3_2lop1"]
+[ext_resource type="FontFile" uid="uid://c0vql256u51fi" path="res://Fonts/DripOctober-vm0JA.ttf" id="3_grqyp"]
 [ext_resource type="AudioStream" uid="uid://dn2wib6782bcn" path="res://Sounds/GUI/KeboardSound/Key1.mp3" id="3_n0nlm"]
 [ext_resource type="AudioStream" uid="uid://3q5gxatnfpem" path="res://Sounds/GUI/AcceptNavidad.mp3" id="3_noeo8"]
 [ext_resource type="AudioStream" uid="uid://daexjm8b4tprf" path="res://Sounds/GUI/KeboardSound/Key2.mp3" id="4_typco"]
 [ext_resource type="AudioStream" uid="uid://hv6fmgj3c0ef" path="res://Sounds/GUI/KeboardSound/Key3.mp3" id="5_dkak8"]
 [ext_resource type="AudioStream" uid="uid://y3jiiny8pip8" path="res://Sounds/GUI/KeboardSound/Key4.mp3" id="6_akdwu"]
+[ext_resource type="AudioStream" uid="uid://csb7lhorn3771" path="res://Sounds/GUI/FondoMenuMusica.mp3" id="7_d2k71"]
 [ext_resource type="AudioStream" uid="uid://b20scmdysye2u" path="res://Sounds/GUI/KeboardSound/Key5.mp3" id="7_ed4xa"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_kghme"]
+bg_color = Color(0.462745, 0.647059, 0.572549, 0.501961)
+border_width_bottom = 2
+border_color = Color(0.105882, 0.176471, 0.14902, 0.501961)
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
+
+[sub_resource type="Theme" id="Theme_7ku3l"]
+LineEdit/styles/normal = SubResource("StyleBoxFlat_kghme")
 
 [node name="MainScreen" type="CanvasLayer"]
 script = ExtResource("1_aar8g")
@@ -20,32 +34,40 @@ scale = Vector2(0.330523, 0.300955)
 texture = ExtResource("2_xyx4t")
 
 [node name="Label1" type="Label" parent="."]
-offset_left = 18.0
-offset_top = 555.0
-offset_right = 93.0
-offset_bottom = 581.0
+offset_left = 15.0
+offset_top = 545.0
+offset_right = 142.0
+offset_bottom = 589.0
+theme_override_fonts/font = ExtResource("3_grqyp")
+theme_override_font_sizes/font_size = 30
 text = "Navidad:"
 
 [node name="Label2" type="Label" parent="."]
-offset_left = 18.0
-offset_top = 604.0
-offset_right = 119.0
-offset_bottom = 630.0
-text = "Cumpleaños:"
-
-[node name="EnterCumple" type="LineEdit" parent="."]
-offset_left = 137.0
-offset_top = 599.0
-offset_right = 236.0
-offset_bottom = 630.0
-placeholder_text = "Contraseña"
+offset_left = 27.0
+offset_top = 588.0
+offset_right = 145.0
+offset_bottom = 632.0
+theme_override_fonts/font = ExtResource("3_grqyp")
+theme_override_font_sizes/font_size = 30
+text = "Cumple:"
 
 [node name="EnterNavidad" type="LineEdit" parent="."]
-offset_left = 138.0
-offset_top = 552.0
-offset_right = 237.0
-offset_bottom = 583.0
+offset_left = 163.0
+offset_top = 555.0
+offset_right = 262.0
+offset_bottom = 586.0
+theme = SubResource("Theme_7ku3l")
 placeholder_text = "Contraseña"
+alignment = 1
+
+[node name="EnterCum" type="LineEdit" parent="."]
+offset_left = 163.0
+offset_top = 600.0
+offset_right = 262.0
+offset_bottom = 631.0
+theme = SubResource("Theme_7ku3l")
+placeholder_text = "Contraseña"
+alignment = 1
 
 [node name="WrongSound" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("2_dk5tv")
@@ -56,6 +78,10 @@ stream = ExtResource("3_2lop1")
 [node name="AcceptNavidad" type="AudioStreamPlayer2D" parent="."]
 position = Vector2(337, 229)
 stream = ExtResource("3_noeo8")
+
+[node name="BackgroundMusic" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("7_d2k71")
+volume_db = -25.0
 
 [node name="KeyBoardSounds" type="Node" parent="."]
 
@@ -74,7 +100,7 @@ stream = ExtResource("6_akdwu")
 [node name="Key5" type="AudioStreamPlayer" parent="KeyBoardSounds"]
 stream = ExtResource("7_ed4xa")
 
-[connection signal="text_changed" from="EnterCumple" to="." method="_on_enter_cumple_text_changed"]
 [connection signal="text_changed" from="EnterNavidad" to="." method="_on_enter_navidad_text_changed"]
+[connection signal="text_changed" from="EnterCum" to="." method="_on_enter_cum_text_changed"]
 [connection signal="finished" from="AcceptCum" to="." method="_on_accept_cum_finished"]
 [connection signal="finished" from="AcceptNavidad" to="." method="_on_accept_password_finished"]
