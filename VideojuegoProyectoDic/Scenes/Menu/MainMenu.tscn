@@ -1,0 +1,80 @@
+[gd_scene load_steps=11 format=3 uid="uid://ooc4ex127jgn"]
+
+[ext_resource type="Script" path="res://Scenes/Menu/MainMenu.gd" id="1_aar8g"]
+[ext_resource type="AudioStream" uid="uid://box6iyywjpppo" path="res://Sounds/GUI/WrongSound.mp3" id="2_dk5tv"]
+[ext_resource type="Texture2D" uid="uid://u1nmm5ag7t64" path="res://Assets/GUI/FondoMenu.png" id="2_xyx4t"]
+[ext_resource type="AudioStream" uid="uid://bmacrsvusqva7" path="res://Sounds/GUI/AcceptCum.mp3" id="3_2lop1"]
+[ext_resource type="AudioStream" uid="uid://dn2wib6782bcn" path="res://Sounds/GUI/KeboardSound/Key1.mp3" id="3_n0nlm"]
+[ext_resource type="AudioStream" uid="uid://3q5gxatnfpem" path="res://Sounds/GUI/AcceptNavidad.mp3" id="3_noeo8"]
+[ext_resource type="AudioStream" uid="uid://daexjm8b4tprf" path="res://Sounds/GUI/KeboardSound/Key2.mp3" id="4_typco"]
+[ext_resource type="AudioStream" uid="uid://hv6fmgj3c0ef" path="res://Sounds/GUI/KeboardSound/Key3.mp3" id="5_dkak8"]
+[ext_resource type="AudioStream" uid="uid://y3jiiny8pip8" path="res://Sounds/GUI/KeboardSound/Key4.mp3" id="6_akdwu"]
+[ext_resource type="AudioStream" uid="uid://b20scmdysye2u" path="res://Sounds/GUI/KeboardSound/Key5.mp3" id="7_ed4xa"]
+
+[node name="MainScreen" type="CanvasLayer"]
+script = ExtResource("1_aar8g")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(608.088, 329.3)
+scale = Vector2(0.330523, 0.300955)
+texture = ExtResource("2_xyx4t")
+
+[node name="Label1" type="Label" parent="."]
+offset_left = 18.0
+offset_top = 555.0
+offset_right = 93.0
+offset_bottom = 581.0
+text = "Navidad:"
+
+[node name="Label2" type="Label" parent="."]
+offset_left = 18.0
+offset_top = 604.0
+offset_right = 119.0
+offset_bottom = 630.0
+text = "Cumpleaños:"
+
+[node name="EnterCumple" type="LineEdit" parent="."]
+offset_left = 137.0
+offset_top = 599.0
+offset_right = 236.0
+offset_bottom = 630.0
+placeholder_text = "Contraseña"
+
+[node name="EnterNavidad" type="LineEdit" parent="."]
+offset_left = 138.0
+offset_top = 552.0
+offset_right = 237.0
+offset_bottom = 583.0
+placeholder_text = "Contraseña"
+
+[node name="WrongSound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("2_dk5tv")
+
+[node name="AcceptCum" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_2lop1")
+
+[node name="AcceptNavidad" type="AudioStreamPlayer2D" parent="."]
+position = Vector2(337, 229)
+stream = ExtResource("3_noeo8")
+
+[node name="KeyBoardSounds" type="Node" parent="."]
+
+[node name="Key1" type="AudioStreamPlayer" parent="KeyBoardSounds"]
+stream = ExtResource("3_n0nlm")
+
+[node name="Key2" type="AudioStreamPlayer" parent="KeyBoardSounds"]
+stream = ExtResource("4_typco")
+
+[node name="Key3" type="AudioStreamPlayer" parent="KeyBoardSounds"]
+stream = ExtResource("5_dkak8")
+
+[node name="Key4" type="AudioStreamPlayer" parent="KeyBoardSounds"]
+stream = ExtResource("6_akdwu")
+
+[node name="Key5" type="AudioStreamPlayer" parent="KeyBoardSounds"]
+stream = ExtResource("7_ed4xa")
+
+[connection signal="text_changed" from="EnterCumple" to="." method="_on_enter_cumple_text_changed"]
+[connection signal="text_changed" from="EnterNavidad" to="." method="_on_enter_navidad_text_changed"]
+[connection signal="finished" from="AcceptCum" to="." method="_on_accept_cum_finished"]
+[connection signal="finished" from="AcceptNavidad" to="." method="_on_accept_password_finished"]
