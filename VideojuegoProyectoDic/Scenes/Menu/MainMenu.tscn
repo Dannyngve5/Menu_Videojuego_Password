@@ -40,7 +40,7 @@ offset_right = 142.0
 offset_bottom = 589.0
 theme_override_fonts/font = ExtResource("3_grqyp")
 theme_override_font_sizes/font_size = 30
-text = "Navidad:"
+text = "Navidad"
 
 [node name="Label2" type="Label" parent="."]
 offset_left = 27.0
@@ -49,7 +49,7 @@ offset_right = 145.0
 offset_bottom = 632.0
 theme_override_fonts/font = ExtResource("3_grqyp")
 theme_override_font_sizes/font_size = 30
-text = "Cumple:"
+text = "Cumple"
 
 [node name="EnterNavidad" type="LineEdit" parent="."]
 offset_left = 163.0
