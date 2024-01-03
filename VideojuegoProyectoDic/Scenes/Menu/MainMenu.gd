@@ -6,16 +6,20 @@ var contraseha_cumple = "86205"
 
 func _ready():
 	$BackgroundMusic.play()
+	$texto.hide()
  
 func _on_enter_navidad_text_changed(new_text):
 	reproducir_sonido_aleatorio()
 	
 	if new_text.length() == 5:
 		if new_text == contrasenha_navidad:
-			$AcceptNavidad.play()
+			#$AcceptNavidad.play()
+			$AcceptCum.play()
+			$texto.show()
+			$BackgroundMusic.stop()
 			$EnterNavidad.text = ""	
 			$EnterNavidad.editable = false
-			$EnterCum.editable = false
+			#$EnterCum.editable = false
 		else:
 			$WrongSound.play()
 			$EnterNavidad.text = ""	
@@ -44,9 +48,11 @@ func reproducir_sonido_aleatorio():
 
 
 func _on_accept_password_finished():
-	get_tree().change_scene_to_file("res://Scenes/Navidad/Nivel1.tscn")
+	#get_tree().change_scene_to_file("res://Scenes/Navidad/Nivel1.tscn")
+	pass
 
 func _on_accept_cum_finished():
-	get_tree().change_scene_to_file("res://Scenes/Navidad/Nivel1.tscn")
+	#get_tree().change_scene_to_file("res://Scenes/Navidad/Nivel1.tscn")
+	pass
 
 
